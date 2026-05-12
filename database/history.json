@@ -1,0 +1,318 @@
+[
+  {
+    "id": "aa6eda76-635c-4544-a61e-64808780e71f",
+    "created_at": "2026-05-05T09:50:17.226541",
+    "title": "Trung Đông sáng 5-5: UAE đánh chặn tên lửa, drone Iran; Ông Trump nói Mỹ bắn hạ 7 tàu Iran",
+    "content_preview": "",
+    "model_used": "lr",
+    "results": {
+      "lr": {
+        "model_name": "Logistic Regression",
+        "label": "reliable",
+        "probability": 91.19,
+        "display": "Tin đáng tin cậy",
+        "badge": "real"
+      }
+    },
+    "primary_label": "reliable",
+    "primary_probability": 91.19
+  },
+  {
+    "id": "5235cfdb-7220-4df6-95bb-7cae784f0b05",
+    "created_at": "2026-05-05T09:49:51.284189",
+    "title": "Xe khách tông đuôi xe đầu kéo trên cao tốc TP.HCM - Long Thành lúc rạng sáng, tài xế tử vong",
+    "content_preview": "",
+    "model_used": "lr",
+    "results": {
+      "lr": {
+        "model_name": "Logistic Regression",
+        "label": "reliable",
+        "probability": 91.96,
+        "display": "Tin đáng tin cậy",
+        "badge": "real"
+      }
+    },
+    "primary_label": "reliable",
+    "primary_probability": 91.96
+  },
+  {
+    "id": "c517d3ee-3a89-48a1-b8fe-2c70f8a83f55",
+    "created_at": "2026-05-05T09:49:32.679729",
+    "title": "thuốc trị ung thư",
+    "content_preview": "",
+    "model_used": "lr",
+    "results": {
+      "lr": {
+        "model_name": "Logistic Regression",
+        "label": "unreliable",
+        "probability": 19.01,
+        "display": "Tin có dấu hiệu không đáng tin cậy",
+        "badge": "fake"
+      }
+    },
+    "primary_label": "unreliable",
+    "primary_probability": 19.01
+  },
+  {
+    "id": "defdb61c-2ca8-4b17-b111-b61d7ae072a6",
+    "created_at": "2026-05-05T09:49:16.841776",
+    "title": "Tổng Bí thư, Chủ tịch nước Tô Lâm lên đường thăm cấp Nhà nước đến Ấn Độ",
+    "content_preview": "",
+    "model_used": "lr",
+    "results": {
+      "lr": {
+        "model_name": "Logistic Regression",
+        "label": "reliable",
+        "probability": 91.18,
+        "display": "Tin đáng tin cậy",
+        "badge": "real"
+      }
+    },
+    "primary_label": "reliable",
+    "primary_probability": 91.18
+  },
+  {
+    "id": "4f9e2257-77ea-4796-ab31-693d4aee6986",
+    "created_at": "2026-05-05T09:48:45.766591",
+    "title": "Thuốc trị ung thư",
+    "content_preview": "",
+    "model_used": "lr",
+    "results": {
+      "lr": {
+        "model_name": "Logistic Regression",
+        "label": "unreliable",
+        "probability": 19.01,
+        "display": "Tin có dấu hiệu không đáng tin cậy",
+        "badge": "fake"
+      }
+    },
+    "primary_label": "unreliable",
+    "primary_probability": 19.01
+  },
+  {
+    "id": "f7ded5d5-8d8c-471e-a906-4a7999c132b8",
+    "created_at": "2026-05-05T09:48:33.879170",
+    "title": "Tổng Bí thư, Chủ tịch nước Tô Lâm lên đường thăm cấp Nhà nước đến Ấn Độ",
+    "content_preview": "",
+    "model_used": "lr",
+    "results": {
+      "lr": {
+        "model_name": "Logistic Regression",
+        "label": "reliable",
+        "probability": 91.18,
+        "display": "Tin đáng tin cậy",
+        "badge": "real"
+      }
+    },
+    "primary_label": "reliable",
+    "primary_probability": 91.18
+  },
+  {
+    "id": "6e89e64d-6339-4842-b279-1e3adcf010a5",
+    "created_at": "2026-05-05T09:41:59.998500",
+    "title": "Công an triệu tập người tát tài xế ở trường mầm non, thách 'bố mày chửi thì làm sao'",
+    "content_preview": "",
+    "model_used": "lr",
+    "results": {
+      "lr": {
+        "model_name": "Logistic Regression",
+        "label": "reliable",
+        "probability": 56.13,
+        "display": "Tin đáng tin cậy",
+        "badge": "real"
+      }
+    },
+    "primary_label": "reliable",
+    "primary_probability": 56.13
+  },
+  {
+    "id": "5d034e29-3e65-46a2-bfaa-9ab3edb59e07",
+    "created_at": "2026-05-05T09:41:34.802664",
+    "title": "Tổng Bí thư, Chủ tịch nước Tô Lâm lên đường thăm cấp Nhà nước đến Ấn Độ",
+    "content_preview": "",
+    "model_used": "lr",
+    "results": {
+      "lr": {
+        "model_name": "Logistic Regression",
+        "label": "reliable",
+        "probability": 55.92,
+        "display": "Tin đáng tin cậy",
+        "badge": "real"
+      }
+    },
+    "primary_label": "reliable",
+    "primary_probability": 55.92
+  },
+  {
+    "id": "02e1bf1e-2f7c-4f1a-bec7-cdcba102c478",
+    "created_at": "2026-04-06T10:30:19.039556",
+    "title": "Khai mạc trọng thể Kỳ họp thứ nhất, Quốc hội khóa XVI",
+    "content_preview": "Sáng 6/4, tại Nhà Quốc hội, Thủ đô Hà Nội, Quốc hội khóa XVI đã khai mạc trọng thể Kỳ họp thứ nhất. Đây là kỳ họp có ý nghĩa đặc biệt quan trọng, không chỉ mở đầu cho nhiệm kỳ mới mà còn đặt nền móng cho một giai đoạn phát triển mới của đất nước.\nDự phiên khai mạc có các đồng chí: Tổng Bí thư Tô Lâm",
+    "model_used": "lr",
+    "results": {
+      "lr": {
+        "model_name": "Logistic Regression",
+        "label": "reliable",
+        "probability": 60.5,
+        "display": "Tin đáng tin cậy",
+        "badge": "real"
+      }
+    },
+    "primary_label": "reliable",
+    "primary_probability": 60.5
+  },
+  {
+    "id": "8f5ab843-9e9d-4917-b2ba-ae25336267b0",
+    "created_at": "2026-04-06T10:26:41.685604",
+    "title": "Tổng Bí thư Tô Lâm: Quán triệt sâu sắc \"Bốn kiên định' về chính trị tư tưởng; \"Bốn nguyên tắc\" về tăng trưởng",
+    "content_preview": "chính phủ nước cộng hòa xã hội chủ nghĩa việt nam\nTổng Bí thư Tô Lâm chủ trì và phát biểu bế mạc Hội nghị - Ảnh: VGP/Đức Tuân\nSau 3 ngày làm việc khẩn trương, nghiêm túc, trách nhiệm, dân chủ, thẳng thắn, sâu sắc, Hội nghị lần thứ 2 Ban Chấp hành Trung ương Đảng khóa XIV đã hoàn thành toàn bộ nội du",
+    "model_used": "lr",
+    "results": {
+      "lr": {
+        "model_name": "Logistic Regression",
+        "label": "reliable",
+        "probability": 55.23,
+        "display": "Tin đáng tin cậy",
+        "badge": "real"
+      }
+    },
+    "primary_label": "reliable",
+    "primary_probability": 55.23
+  },
+  {
+    "id": "8e2f13ed-8d60-43e0-bc47-33c60684ce17",
+    "created_at": "2026-04-04T21:46:45.624536",
+    "title": "gia xăng ngày mai giảm còn 13 ngàn đồng trên 1 lit",
+    "content_preview": "",
+    "model_used": "lr",
+    "results": {
+      "lr": {
+        "model_name": "Logistic Regression",
+        "label": "reliable",
+        "probability": 54.21,
+        "display": "Tin đáng tin cậy",
+        "badge": "real"
+      }
+    },
+    "primary_label": "reliable",
+    "primary_probability": 54.21
+  },
+  {
+    "id": "af197755-5bc4-48ff-99b0-77793fe41191",
+    "created_at": "2026-04-04T21:46:32.259277",
+    "title": "gia xăng ngày mai giảm còn 23 ngàn đồng trên 1 lit",
+    "content_preview": "",
+    "model_used": "lr",
+    "results": {
+      "lr": {
+        "model_name": "Logistic Regression",
+        "label": "reliable",
+        "probability": 54.21,
+        "display": "Tin đáng tin cậy",
+        "badge": "real"
+      }
+    },
+    "primary_label": "reliable",
+    "primary_probability": 54.21
+  },
+  {
+    "id": "0a307a92-c37f-487c-8b1b-4ea724c3440f",
+    "created_at": "2026-04-04T21:43:16.718860",
+    "title": "Thuốc bí truyền chữa ung thư 100% trong 3 ngày",
+    "content_preview": "Một bài đăng trên mạng xã hội quảng cáo loại thuốc bí truyền có thể chữa ung thư hoàn toàn trong ba ngày mà không cần xạ trị hay hóa trị, được nhiều người chia sẻ rộng rãi.",
+    "model_used": "lr",
+    "results": {
+      "lr": {
+        "model_name": "Logistic Regression",
+        "label": "unreliable",
+        "probability": 65.35,
+        "display": "Tin có dấu hiệu không đáng tin cậy",
+        "badge": "fake"
+      }
+    },
+    "primary_label": "unreliable",
+    "primary_probability": 65.35
+  },
+  {
+    "id": "36006fc2-57cc-48f3-980c-82297fc75fee",
+    "created_at": "2026-04-04T21:42:54.637779",
+    "title": "Thuốc bí truyền chữa ung thư 100% trong 3 ngày",
+    "content_preview": "Một bài đăng trên mạng xã hội quảng cáo loại thuốc bí truyền có thể chữa ung thư hoàn toàn trong ba ngày mà không cần xạ trị hay hóa trị, được nhiều người chia sẻ rộng rãi.",
+    "model_used": "all",
+    "results": {
+      "lr": {
+        "model_name": "Logistic Regression",
+        "label": "unreliable",
+        "probability": 65.35,
+        "display": "Tin có dấu hiệu không đáng tin cậy",
+        "badge": "fake"
+      },
+      "nb": {
+        "model_name": "Naive Bayes",
+        "label": "unreliable",
+        "probability": 99.98,
+        "display": "Tin có dấu hiệu không đáng tin cậy",
+        "badge": "fake"
+      },
+      "svm": {
+        "model_name": "Linear SVM",
+        "label": "unreliable",
+        "probability": 99.78,
+        "display": "Tin có dấu hiệu không đáng tin cậy",
+        "badge": "fake"
+      }
+    },
+    "primary_label": "unreliable",
+    "primary_probability": 65.35
+  },
+  {
+    "id": "35cbb88a-b05c-4763-8ffc-a83706cd7d04",
+    "created_at": "2026-04-04T21:42:37.851688",
+    "title": "Ngân hàng Nhà nước công bố điều chỉnh lãi suất điều hành",
+    "content_preview": "Ngân hàng Nhà nước Việt Nam vừa ban hành quyết định điều chỉnh lãi suất điều hành nhằm hỗ trợ nền kinh tế phục hồi, có hiệu lực từ ngày ký theo thông báo chính thức.",
+    "model_used": "all",
+    "results": {
+      "lr": {
+        "model_name": "Logistic Regression",
+        "label": "reliable",
+        "probability": 67.47,
+        "display": "Tin đáng tin cậy",
+        "badge": "real"
+      },
+      "nb": {
+        "model_name": "Naive Bayes",
+        "label": "reliable",
+        "probability": 99.83,
+        "display": "Tin đáng tin cậy",
+        "badge": "real"
+      },
+      "svm": {
+        "model_name": "Linear SVM",
+        "label": "reliable",
+        "probability": 99.08,
+        "display": "Tin đáng tin cậy",
+        "badge": "real"
+      }
+    },
+    "primary_label": "reliable",
+    "primary_probability": 67.47
+  },
+  {
+    "id": "09d14ea1-29bd-4d16-8585-70d86ac7edd6",
+    "created_at": "2026-04-04T21:41:57.537514",
+    "title": "Thuốc bí truyền chữa ung thư 100% trong 3 ngày",
+    "content_preview": "Một bài đăng trên mạng xã hội quảng cáo loại thuốc bí truyền có thể chữa ung thư hoàn toàn trong ba ngày mà không cần xạ trị hay hóa trị, được nhiều người chia sẻ rộng rãi.",
+    "model_used": "lr",
+    "results": {
+      "lr": {
+        "model_name": "Logistic Regression",
+        "label": "unreliable",
+        "probability": 65.35,
+        "display": "Tin có dấu hiệu không đáng tin cậy",
+        "badge": "fake"
+      }
+    },
+    "primary_label": "unreliable",
+    "primary_probability": 65.35
+  }
+]
