@@ -1,4 +1,6 @@
-from __future__ import annotations
+import os
+
+app_content = """from __future__ import annotations
 
 import json
 import os
@@ -585,11 +587,11 @@ def api_extract():
 # ==========================================
 
 def _normalize(text: str) -> str:
-    """Chuyển về chữ thường, bỏ dấu, chuẩn hoá khoảng trắng."""
+    \"\"\"Chuyển về chữ thường, bỏ dấu, chuẩn hoá khoảng trắng.\"\"\"
     text = text.lower().strip()
     nfkd = _unicodedata.normalize("NFKD", text)
     no_accent = "".join(c for c in nfkd if not _unicodedata.combining(c))
-    return _re.sub(r"\s+", " ", no_accent)
+    return _re.sub(r"\\s+", " ", no_accent)
 
 _INTENTS: dict[str, dict] = {
     "greeting": {
@@ -598,9 +600,9 @@ _INTENTS: dict[str, dict] = {
             "chao ban", "good morning", "buoi sang",
         ],
         "replies": [
-            "Chào bạn 👋 Mình là trợ lý của TrustCheck AI.\nBạn muốn kiểm tra tin nào? Dán tiêu đề, nội dung hoặc URL vào trang **Phân tích** là mình hỗ trợ liền nha!",
-            "Hello! 👋 Mình sẵn sàng giúp bạn kiểm chứng tin tức.\nBạn có thể hỏi mình về cách hệ thống chấm điểm, mô hình ML, hoặc dán tin cần kiểm tra nhé.",
-            "Chào bạn! Mình là trợ lý local của TrustCheck AI 🤖\nHỏi mình bất cứ gì về kiểm chứng tin tức, mình sẽ hướng dẫn bạn nhé!",
+            "Chào bạn 👋 Mình là trợ lý của TrustCheck AI.\\nBạn muốn kiểm tra tin nào? Dán tiêu đề, nội dung hoặc URL vào trang **Phân tích** là mình hỗ trợ liền nha!",
+            "Hello! 👋 Mình sẵn sàng giúp bạn kiểm chứng tin tức.\\nBạn có thể hỏi mình về cách hệ thống chấm điểm, mô hình ML, hoặc dán tin cần kiểm tra nhé.",
+            "Chào bạn! Mình là trợ lý local của TrustCheck AI 🤖\\nHỏi mình bất cứ gì về kiểm chứng tin tức, mình sẽ hướng dẫn bạn nhé!",
         ],
     },
     "thanks": {
@@ -622,9 +624,9 @@ _INTENTS: dict[str, dict] = {
             "cho rang", "nghe noi", "fact check", "factcheck",
         ],
         "replies": [
-            "Để kiểm tra tin này, bạn hãy dán tiêu đề hoặc nội dung vào trang **Phân tích** nhé.\nHệ thống sẽ dùng 3 mô hình ML (Naive Bayes, Logistic Regression, SVM) kết hợp phân tích nguồn và văn phong để chấm điểm tin cậy.",
-            "Mình hiểu bạn muốn kiểm chứng tin! 🔍\nCách nhanh nhất: dán nội dung hoặc URL vào trang **Phân tích**. Sau đó mình có thể giải thích kết quả cho bạn.",
-            "Bạn muốn xác minh thông tin phải không? 👍\nHãy vào trang **Phân tích**, dán tiêu đề + nội dung hoặc URL bài báo. Hệ thống sẽ trả về điểm tin cậy chi tiết.",
+            "Để kiểm tra tin này, bạn hãy dán tiêu đề hoặc nội dung vào trang **Phân tích** nhé.\\nHệ thống sẽ dùng 3 mô hình ML (Naive Bayes, Logistic Regression, SVM) kết hợp phân tích nguồn và văn phong để chấm điểm tin cậy.",
+            "Mình hiểu bạn muốn kiểm chứng tin! 🔍\\nCách nhanh nhất: dán nội dung hoặc URL vào trang **Phân tích**. Sau đó mình có thể giải thích kết quả cho bạn.",
+            "Bạn muốn xác minh thông tin phải không? 👍\\nHãy vào trang **Phân tích**, dán tiêu đề + nội dung hoặc URL bài báo. Hệ thống sẽ trả về điểm tin cậy chi tiết.",
         ],
     },
     "ask_no_content": {
@@ -633,8 +635,8 @@ _INTENTS: dict[str, dict] = {
             "co that khong", "tin nay dung", "tin nay sai",
         ],
         "replies": [
-            "Bạn gửi giúp mình tiêu đề, nội dung hoặc ảnh tin đó nhé 📝\nMình cần có nội dung cụ thể thì mới phân tích được.",
-            "Mình cần bạn gửi nội dung cụ thể để kiểm tra nha.\nBạn có thể dán tiêu đề, đoạn tin hoặc URL vào đây hoặc vào trang **Phân tích**.",
+            "Bạn gửi giúp mình tiêu đề, nội dung hoặc ảnh tin đó nhé 📝\\nMình cần có nội dung cụ thể thì mới phân tích được.",
+            "Mình cần bạn gửi nội dung cụ thể để kiểm tra nha.\\nBạn có thể dán tiêu đề, đoạn tin hoặc URL vào đây hoặc vào trang **Phân tích**.",
         ],
     },
     "score_explain": {
@@ -644,8 +646,8 @@ _INTENTS: dict[str, dict] = {
             "diem so", "bang diem",
         ],
         "replies": [
-            "Điểm tin cậy được tính như sau:\n\n• **AI Score** (45%): từ mô hình ML (NB, LR, SVM)\n• **Source Score** (25%): độ uy tín nguồn/URL\n• **Writing Score** (20%): văn phong trung lập hay giật gân\n• **Keyword Risk** (10%): từ khóa rủi ro\n\nĐiểm cuối cùng = tổng hợp có trọng số các thành phần trên. Nếu phát hiện nhiều từ khóa rủi ro, điểm sẽ bị giới hạn thêm.",
-            "Hệ thống chấm điểm dựa trên 4 tiêu chí:\n\n1. **AI Score**: mô hình ML phân loại tin\n2. **Source Score**: nguồn uy tín hay mạng xã hội\n3. **Writing Score**: văn phong có khách quan không\n4. **Keyword Risk**: có từ giật gân không\n\nCông thức: `0.45×AI + 0.25×Source + 0.20×Writing + 0.10×Keyword`",
+            "Điểm tin cậy được tính như sau:\\n\\n• **AI Score** (45%): từ mô hình ML (NB, LR, SVM)\\n• **Source Score** (25%): độ uy tín nguồn/URL\\n• **Writing Score** (20%): văn phong trung lập hay giật gân\\n• **Keyword Risk** (10%): từ khóa rủi ro\\n\\nĐiểm cuối cùng = tổng hợp có trọng số các thành phần trên. Nếu phát hiện nhiều từ khóa rủi ro, điểm sẽ bị giới hạn thêm.",
+            "Hệ thống chấm điểm dựa trên 4 tiêu chí:\\n\\n1. **AI Score**: mô hình ML phân loại tin\\n2. **Source Score**: nguồn uy tín hay mạng xã hội\\n3. **Writing Score**: văn phong có khách quan không\\n4. **Keyword Risk**: có từ giật gân không\\n\\nCông thức: `0.45×AI + 0.25×Source + 0.20×Writing + 0.10×Keyword`",
         ],
     },
     "fake_reason": {
@@ -655,8 +657,8 @@ _INTENTS: dict[str, dict] = {
             "vi sao bi danh gia", "tai sao khong tin",
         ],
         "replies": [
-            "Tin bị đánh giá **nghi vấn/không đáng tin** thường do:\n\n• Mô hình ML phát hiện mẫu ngôn ngữ giống tin giả\n• Nguồn không rõ ràng hoặc từ mạng xã hội\n• Văn phong giật gân, kêu gọi \"chia sẻ gấp\"\n• Chứa từ khóa rủi ro: \"trúng thưởng\", \"cam kết 100%\"...\n\nBạn có thể xem chi tiết từng thành phần điểm trong kết quả phân tích.",
-            "Khi tin bị đánh giá thấp, có thể do:\n\n1. AI Score thấp — mô hình nhận dạng mẫu tin giả\n2. Source Score thấp — nguồn từ blog, mạng xã hội\n3. Có nhiều từ khóa rủi ro (\"khẩn cấp\", \"lợi nhuận khủng\"...)\n\nHãy kiểm tra lại kết quả chi tiết trên trang **Phân tích** nhé.",
+            "Tin bị đánh giá **nghi vấn/không đáng tin** thường do:\\n\\n• Mô hình ML phát hiện mẫu ngôn ngữ giống tin giả\\n• Nguồn không rõ ràng hoặc từ mạng xã hội\\n• Văn phong giật gân, kêu gọi \"chia sẻ gấp\"\\n• Chứa từ khóa rủi ro: \"trúng thưởng\", \"cam kết 100%\"...\\n\\nBạn có thể xem chi tiết từng thành phần điểm trong kết quả phân tích.",
+            "Khi tin bị đánh giá thấp, có thể do:\\n\\n1. AI Score thấp — mô hình nhận dạng mẫu tin giả\\n2. Source Score thấp — nguồn từ blog, mạng xã hội\\n3. Có nhiều từ khóa rủi ro (\"khẩn cấp\", \"lợi nhuận khủng\"...)\\n\\nHãy kiểm tra lại kết quả chi tiết trên trang **Phân tích** nhé.",
         ],
     },
     "reliable_reason": {
@@ -666,7 +668,7 @@ _INTENTS: dict[str, dict] = {
             "tin tot", "diem cao",
         ],
         "replies": [
-            "Tin được đánh giá **đáng tin cậy** khi:\n\n• Mô hình ML cho AI Score cao (giống mẫu tin thật)\n• Nguồn từ báo chính thống (VnExpress, Tuổi Trẻ, VTV...)\n• Văn phong trung lập, khách quan\n• Không chứa từ khóa rủi ro\n\nTuy nhiên, kết quả ML chỉ mang tính tham khảo, bạn vẫn nên đối chiếu thêm nhé!",
+            "Tin được đánh giá **đáng tin cậy** khi:\\n\\n• Mô hình ML cho AI Score cao (giống mẫu tin thật)\\n• Nguồn từ báo chính thống (VnExpress, Tuổi Trẻ, VTV...)\\n• Văn phong trung lập, khách quan\\n• Không chứa từ khóa rủi ro\\n\\nTuy nhiên, kết quả ML chỉ mang tính tham khảo, bạn vẫn nên đối chiếu thêm nhé!",
         ],
     },
     "model_explain": {
@@ -676,8 +678,8 @@ _INTENTS: dict[str, dict] = {
             "hoc may", "algorithm", "thuat toan",
         ],
         "replies": [
-            "Hệ thống dùng **TF-IDF** để chuyển văn bản thành vector số, rồi đưa qua 3 mô hình:\n\n• **Naive Bayes**: nhanh, tốt với dữ liệu văn bản\n• **Logistic Regression**: ổn định, dễ giải thích\n• **Linear SVM**: mạnh với bài toán phân loại nhị phân\n\nKhi chọn \"Tất cả\", hệ thống tổng hợp kết quả với trọng số: NB 20%, LR 40%, SVM 40%.",
-            "TrustCheck AI sử dụng pipeline: **TF-IDF → ML Model**\n\n📊 **TF-IDF**: đo tần suất từ, giảm trọng số từ phổ biến\n🧠 **3 mô hình**: Naive Bayes, Logistic Regression, SVM\n\nBạn có thể xem Accuracy, Precision, Recall, F1 của từng mô hình trên trang **Dashboard**.",
+            "Hệ thống dùng **TF-IDF** để chuyển văn bản thành vector số, rồi đưa qua 3 mô hình:\\n\\n• **Naive Bayes**: nhanh, tốt với dữ liệu văn bản\\n• **Logistic Regression**: ổn định, dễ giải thích\\n• **Linear SVM**: mạnh với bài toán phân loại nhị phân\\n\\nKhi chọn \"Tất cả\", hệ thống tổng hợp kết quả với trọng số: NB 20%, LR 40%, SVM 40%.",
+            "TrustCheck AI sử dụng pipeline: **TF-IDF → ML Model**\\n\\n📊 **TF-IDF**: đo tần suất từ, giảm trọng số từ phổ biến\\n🧠 **3 mô hình**: Naive Bayes, Logistic Regression, SVM\\n\\nBạn có thể xem Accuracy, Precision, Recall, F1 của từng mô hình trên trang **Dashboard**.",
         ],
     },
     "ocr_help": {
@@ -687,8 +689,8 @@ _INTENTS: dict[str, dict] = {
             "nhan dang chu", "nhan dien anh",
         ],
         "replies": [
-            "TrustCheck AI hỗ trợ phân tích ảnh tin tức! 📷\n\nBạn chỉ cần:\n1. Vào trang **Phân tích**\n2. Chọn tab **Phân tích ảnh**\n3. Upload ảnh chụp màn hình tin tức\n\nHệ thống sẽ dùng OCR (Tesseract) để trích xuất chữ trong ảnh, rồi phân tích bằng mô hình ML.",
-            "Bạn có ảnh chụp tin tức muốn kiểm tra? 🖼️\n\nHãy vào trang **Phân tích** → tab **Phân tích ảnh** → upload ảnh lên.\nHệ thống sẽ đọc chữ trong ảnh (OCR) và phân tích tự động nhé!",
+            "TrustCheck AI hỗ trợ phân tích ảnh tin tức! 📷\\n\\nBạn chỉ cần:\\n1. Vào trang **Phân tích**\\n2. Chọn tab **Phân tích ảnh**\\n3. Upload ảnh chụp màn hình tin tức\\n\\nHệ thống sẽ dùng OCR (Tesseract) để trích xuất chữ trong ảnh, rồi phân tích bằng mô hình ML.",
+            "Bạn có ảnh chụp tin tức muốn kiểm tra? 🖼️\\n\\nHãy vào trang **Phân tích** → tab **Phân tích ảnh** → upload ảnh lên.\\nHệ thống sẽ đọc chữ trong ảnh (OCR) và phân tích tự động nhé!",
         ],
     },
     "source_check": {
@@ -697,7 +699,7 @@ _INTENTS: dict[str, dict] = {
             "chinh thong", "uy tin", "source", "trang web",
         ],
         "replies": [
-            "**Source Score** đánh giá uy tín nguồn tin:\n\n✅ **Nguồn tin cậy** (90đ): gov.vn, chinhphu.vn, VnExpress, Tuổi Trẻ, VTV, Thanh Niên...\n⚠️ **Nguồn cần cẩn trọng** (35đ): Facebook, TikTok, YouTube, blog cá nhân\n❓ **Nguồn chưa xác định** (55đ): các trang khác\n\nNếu có URL, hãy dán vào trang **Phân tích** để hệ thống đánh giá nguồn tự động.",
+            "**Source Score** đánh giá uy tín nguồn tin:\\n\\n✅ **Nguồn tin cậy** (90đ): gov.vn, chinhphu.vn, VnExpress, Tuổi Trẻ, VTV, Thanh Niên...\\n⚠️ **Nguồn cần cẩn trọng** (35đ): Facebook, TikTok, YouTube, blog cá nhân\\n❓ **Nguồn chưa xác định** (55đ): các trang khác\\n\\nNếu có URL, hãy dán vào trang **Phân tích** để hệ thống đánh giá nguồn tự động.",
         ],
     },
     "share_advice": {
@@ -707,8 +709,8 @@ _INTENTS: dict[str, dict] = {
             "nen share", "repost",
         ],
         "replies": [
-            "Trước khi chia sẻ một tin, bạn nên:\n\n1️⃣ Kiểm tra nguồn — tin từ đâu?\n2️⃣ Đối chiếu với báo chính thống\n3️⃣ Dán vào TrustCheck AI để chấm điểm\n\n📌 Nguyên tắc: **Nếu không chắc chắn, đừng chia sẻ.**\nTin giả lan truyền nhanh vì mọi người chia sẻ trước khi kiểm chứng.",
-            "Nguyên tắc vàng: **Chưa chắc → Chưa share** ✋\n\nĐặc biệt cẩn trọng với tin có:\n• Giọng khẩn cấp, kêu gọi \"chia sẻ gấp\"\n• Không có nguồn trích dẫn\n• Hứa hẹn quá tốt (trúng thưởng, lợi nhuận...)\n\nDán tin vào trang **Phân tích** để kiểm tra trước khi share nhé!",
+            "Trước khi chia sẻ một tin, bạn nên:\\n\\n1️⃣ Kiểm tra nguồn — tin từ đâu?\\n2️⃣ Đối chiếu với báo chính thống\\n3️⃣ Dán vào TrustCheck AI để chấm điểm\\n\\n📌 Nguyên tắc: **Nếu không chắc chắn, đừng chia sẻ.**\\nTin giả lan truyền nhanh vì mọi người chia sẻ trước khi kiểm chứng.",
+            "Nguyên tắc vàng: **Chưa chắc → Chưa share** ✋\\n\\nĐặc biệt cẩn trọng với tin có:\\n• Giọng khẩn cấp, kêu gọi \"chia sẻ gấp\"\\n• Không có nguồn trích dẫn\\n• Hứa hẹn quá tốt (trúng thưởng, lợi nhuận...)\\n\\nDán tin vào trang **Phân tích** để kiểm tra trước khi share nhé!",
         ],
     },
     "dashboard_help": {
@@ -718,7 +720,7 @@ _INTENTS: dict[str, dict] = {
             "do chinh xac", "chart",
         ],
         "replies": [
-            "Trang **Dashboard** hiển thị hiệu suất các mô hình ML:\n\n📊 **Accuracy**: tỷ lệ dự đoán đúng tổng thể\n🎯 **Precision**: trong các tin dự đoán \"giả\", bao nhiêu đúng\n📈 **Recall**: phát hiện được bao nhiêu tin giả thực tế\n⚖️ **F1-Score**: cân bằng giữa Precision và Recall\n\nCác chỉ số này chứng minh mô hình đã được huấn luyện và đánh giá nghiêm túc.",
+            "Trang **Dashboard** hiển thị hiệu suất các mô hình ML:\\n\\n📊 **Accuracy**: tỷ lệ dự đoán đúng tổng thể\\n🎯 **Precision**: trong các tin dự đoán \"giả\", bao nhiêu đúng\\n📈 **Recall**: phát hiện được bao nhiêu tin giả thực tế\\n⚖️ **F1-Score**: cân bằng giữa Precision và Recall\\n\\nCác chỉ số này chứng minh mô hình đã được huấn luyện và đánh giá nghiêm túc.",
         ],
     },
     "history_help": {
@@ -727,16 +729,16 @@ _INTENTS: dict[str, dict] = {
             "ket qua cu", "lan truoc",
         ],
         "replies": [
-            "Trang **Lịch sử** lưu lại tất cả các lần bạn phân tích tin tức 📋\n\nMỗi mục gồm: tiêu đề, điểm tin cậy, mô hình đã dùng, nhãn kết quả và thời gian.\nBạn có thể xoá từng mục hoặc xoá toàn bộ lịch sử.",
-            "**Lịch sử phân tích** giúp bạn:\n\n• Xem lại các tin đã kiểm tra\n• So sánh kết quả giữa các lần\n• Theo dõi xu hướng tin giả/tin thật\n\nVào trang **Lịch sử** để xem chi tiết nhé!",
+            "Trang **Lịch sử** lưu lại tất cả các lần bạn phân tích tin tức 📋\\n\\nMỗi mục gồm: tiêu đề, điểm tin cậy, mô hình đã dùng, nhãn kết quả và thời gian.\\nBạn có thể xoá từng mục hoặc xoá toàn bộ lịch sử.",
+            "**Lịch sử phân tích** giúp bạn:\\n\\n• Xem lại các tin đã kiểm tra\\n• So sánh kết quả giữa các lần\\n• Theo dõi xu hướng tin giả/tin thật\\n\\nVào trang **Lịch sử** để xem chi tiết nhé!",
         ],
     },
     "out_of_scope": {
         "keywords": [],
         "replies": [
-            "Câu hỏi này nằm ngoài phạm vi của mình rồi 😅\nMình chuyên hỗ trợ **kiểm chứng tin tức** thôi nha.\n\nBạn có thể hỏi mình về:\n• Cách kiểm tra tin đúng/sai\n• Điểm tin cậy tính thế nào\n• Mô hình ML hoạt động ra sao\n• Cách dùng các trang Phân tích, Dashboard, Lịch sử",
-            "Hmm, mình chỉ hỗ trợ về kiểm chứng tin tức thôi nha 🙏\nNhưng nếu bạn gặp tin nghi vấn nào, cứ gửi mình — mình sẽ hướng dẫn cách kiểm tra!",
-            "Mình không rành lĩnh vực này lắm 😊 Nhưng nếu bạn muốn kiểm tra một tin tức nào đó, mình sẵn sàng giúp!\nChỉ cần dán tiêu đề hoặc nội dung vào trang **Phân tích** là được.",
+            "Câu hỏi này nằm ngoài phạm vi của mình rồi 😅\\nMình chuyên hỗ trợ **kiểm chứng tin tức** thôi nha.\\n\\nBạn có thể hỏi mình về:\\n• Cách kiểm tra tin đúng/sai\\n• Điểm tin cậy tính thế nào\\n• Mô hình ML hoạt động ra sao\\n• Cách dùng các trang Phân tích, Dashboard, Lịch sử",
+            "Hmm, mình chỉ hỗ trợ về kiểm chứng tin tức thôi nha 🙏\\nNhưng nếu bạn gặp tin nghi vấn nào, cứ gửi mình — mình sẽ hướng dẫn cách kiểm tra!",
+            "Mình không rành lĩnh vực này lắm 😊 Nhưng nếu bạn muốn kiểm tra một tin tức nào đó, mình sẵn sàng giúp!\\nChỉ cần dán tiêu đề hoặc nội dung vào trang **Phân tích** là được.",
         ],
     },
 }
@@ -759,8 +761,8 @@ def _match_intent(msg_normalized: str, msg_original: str) -> tuple[str, str]:
 
     if len(msg_original) > 120:
         return "long_content", (
-            "Mình thấy bạn gửi một đoạn nội dung khá dài — có vẻ đây là tin cần kiểm chứng! 📰\n\n"
-            "Để có kết quả chính xác nhất, bạn hãy **dán nội dung này vào trang Phân tích** nhé.\n"
+            "Mình thấy bạn gửi một đoạn nội dung khá dài — có vẻ đây là tin cần kiểm chứng! 📰\\n\\n"
+            "Để có kết quả chính xác nhất, bạn hãy **dán nội dung này vào trang Phân tích** nhé.\\n"
             "Hệ thống sẽ dùng AI + phân tích nguồn + văn phong để chấm điểm chi tiết cho bạn."
         )
 
@@ -824,5 +826,9 @@ def analyze_image():
 
 
 if __name__ == "__main__":
-    print("Server running at: http://127.0.0.1:5000")
+    print("VietNewsCheck đang chạy tại: http://127.0.0.1:5000")
     app.run(debug=True, host="127.0.0.1", port=5000)
+"""
+
+with open("d:\\DoAnCoSo\\app.py", "w", encoding="utf-8") as f:
+    f.write(app_content)

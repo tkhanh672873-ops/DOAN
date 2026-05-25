@@ -1,0 +1,32 @@
+{
+  "trusted_sources": [
+    "gov.vn",
+    "chinhphu.vn",
+    "baochinhphu.vn",
+    "moet.gov.vn",
+    "moh.gov.vn",
+    "mic.gov.vn",
+    "sbv.gov.vn",
+    "vnexpress.net",
+    "tuoitre.vn",
+    "thanhnien.vn",
+    "dantri.com.vn",
+    "vietnamnet.vn",
+    "vtv.vn",
+    "vov.vn",
+    "nhandan.vn"
+  ],
+  "low_trust_sources": [
+    "facebook.com",
+    "tiktok.com",
+    "youtube.com",
+    "blogspot",
+    "wordpress",
+    "telegram"
+  ],
+  "source_score": {
+    "trusted": 90,
+    "low_trust": 35,
+    "unknown": 55
+  }
+}

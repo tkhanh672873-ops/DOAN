@@ -1,0 +1,38 @@
+[
+  {
+    "id": 1,
+    "name": "Tài chính ngân hàng",
+    "slug": "tai-chinh-ngan-hang",
+    "description": "Các nội dung liên quan đến giao dịch, đầu tư, ngân hàng, vay vốn và lừa đảo tài chính."
+  },
+  {
+    "id": 2,
+    "name": "Sức khỏe cộng đồng",
+    "slug": "suc-khoe-cong-dong",
+    "description": "Các nội dung liên quan đến y tế, thuốc, thực phẩm chức năng và tin sai lệch về sức khỏe."
+  },
+  {
+    "id": 3,
+    "name": "Quyền lợi người dân",
+    "slug": "quyen-loi-nguoi-dan",
+    "description": "Các thông tin liên quan đến chính sách, thủ tục, quyền lợi và cảnh báo giả mạo cơ quan chức năng."
+  },
+  {
+    "id": 4,
+    "name": "Giáo dục",
+    "slug": "giao-duc",
+    "description": "Các thông tin liên quan đến tuyển sinh, học phí, lịch thi, chính sách giáo dục."
+  },
+  {
+    "id": 5,
+    "name": "An toàn thông tin",
+    "slug": "an-toan-thong-tin",
+    "description": "Các cảnh báo về mã độc, tài khoản giả mạo, đánh cắp dữ liệu và bảo mật cá nhân."
+  },
+  {
+    "id": 6,
+    "name": "Lừa đảo trực tuyến",
+    "slug": "lua-dao-truc-tuyen",
+    "description": "Các nội dung có dấu hiệu lừa đảo, mạo danh, kêu gọi chuyển khoản hoặc hứa hẹn lợi ích bất thường."
+  }
+]

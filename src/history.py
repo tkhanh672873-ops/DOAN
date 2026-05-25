@@ -1,78 +1,87 @@
+from __future__ import annotations
+
 import json
 import os
 import uuid
 from datetime import datetime
 
+
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
-DB_DIR = os.path.join(BASE_DIR, "database")
-DB_PATH = os.path.join(DB_DIR, "history.json")
+HISTORY_PATH = os.path.join(BASE_DIR, "database", "history.json")
 
 
-def _load():
-    os.makedirs(DB_DIR, exist_ok=True)
-    if not os.path.exists(DB_PATH):
-        return []
-    try:
-        with open(DB_PATH, "r", encoding="utf-8") as f:
-            return json.load(f)
-    except (json.JSONDecodeError, IOError):
-        return []
+def ensure_history_file():
+    os.makedirs(os.path.dirname(HISTORY_PATH), exist_ok=True)
+
+    if not os.path.exists(HISTORY_PATH):
+        with open(HISTORY_PATH, "w", encoding="utf-8") as f:
+            json.dump([], f, ensure_ascii=False, indent=2)
 
 
-def _save(data):
-    os.makedirs(DB_DIR, exist_ok=True)
-    with open(DB_PATH, "w", encoding="utf-8") as f:
-        json.dump(data, f, ensure_ascii=False, indent=2)
+def get_history():
+    ensure_history_file()
+
+    with open(HISTORY_PATH, "r", encoding="utf-8") as f:
+        return json.load(f)
 
 
-def add_to_history(title: str, content: str, results: dict, model_used: str) -> dict:
-    """Thêm một kết quả dự đoán vào lịch sử."""
-    data = _load()
+def save_history(items):
+    ensure_history_file()
 
-    # Lấy kết quả primary (model đầu tiên hoặc model duy nhất)
-    primary_key = list(results.keys())[0]
-    primary_result = results[primary_key]
+    with open(HISTORY_PATH, "w", encoding="utf-8") as f:
+        json.dump(items, f, ensure_ascii=False, indent=2)
 
-    entry = {
-        "id": str(uuid.uuid4()),
-        "created_at": datetime.now().isoformat(),
-        "title": title[:200] if title else "",
-        "content_preview": content[:300] if content else "",
-        "model_used": model_used,
-        "results": results,
-        "primary_label": primary_result.get("label", ""),
-        "primary_probability": primary_result.get("probability", 0),
+
+def add_to_history(title, content, result, model_key="all"):
+    items = get_history()
+
+    summary = result.get("_summary", {})
+    verdict = summary.get("verdict", {})
+
+    final_score = summary.get("final_score", 0)
+
+    item = {
+        "id": uuid.uuid4().hex[:12],
+        "title": title or "Không có tiêu đề",
+        "content": content or "",
+        "content_preview": (content or "")[:180],
+        "model": model_key,
+        "model_used": model_key,
+        "result": result,
+
+        "final_score": final_score,
+        "primary_probability": final_score,
+
+        "label": verdict.get("label", "Chưa xác định"),
+        "badge": verdict.get("badge", "warning"),
+
+        "primary_label": (
+            "reliable" if final_score >= 75
+            else "unreliable" if final_score < 50
+            else "suspicious"
+        ),
+
+        "created_at": datetime.now().strftime("%d/%m/%Y %H:%M")
     }
 
-    data.insert(0, entry)
+    items.insert(0, item)
+    save_history(items)
 
-    # Giới hạn lịch sử tối đa 500 mục
-    if len(data) > 500:
-        data = data[:500]
+    return item
 
-    _save(data)
-    return entry
+def delete_from_history(hist_id):
+    items = get_history()
+    new_items = [item for item in items if item.get("id") != hist_id]
 
-
-def get_history() -> list:
-    """Lấy toàn bộ lịch sử dự đoán."""
-    return _load()
-
-
-def delete_from_history(hist_id: str) -> bool:
-    """Xoá một mục lịch sử theo ID. Trả về True nếu thành công."""
-    data = _load()
-    original_len = len(data)
-    data = [item for item in data if item.get("id") != hist_id]
-    if len(data) == original_len:
+    if len(new_items) == len(items):
         return False
-    _save(data)
+
+    save_history(new_items)
     return True
 
 
-def clear_history() -> int:
-    """Xoá toàn bộ lịch sử. Trả về số mục đã xoá."""
-    data = _load()
-    count = len(data)
-    _save([])
+def clear_history():
+    items = get_history()
+    count = len(items)
+    save_history([])
     return count

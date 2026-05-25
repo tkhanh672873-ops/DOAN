@@ -1,0 +1,26 @@
+[
+  {
+    "id": 1,
+    "title": "Cảnh báo mạo danh ngân hàng để yêu cầu người dùng cung cấp mã OTP",
+    "category": "Tài chính ngân hàng",
+    "verdict": "Không đáng tin cậy",
+    "source": "Dữ liệu mẫu",
+    "summary": "Nội dung có dấu hiệu yêu cầu cung cấp mã OTP, chuyển khoản hoặc truy cập đường dẫn lạ."
+  },
+  {
+    "id": 2,
+    "title": "Cảnh báo tin sai lệch về thuốc chữa khỏi hoàn toàn trong thời gian ngắn",
+    "category": "Sức khỏe cộng đồng",
+    "verdict": "Nghi vấn",
+    "source": "Dữ liệu mẫu",
+    "summary": "Nội dung sử dụng các cụm từ cam kết tuyệt đối, chưa có nguồn y tế chính thống xác nhận."
+  },
+  {
+    "id": 3,
+    "title": "Thông báo chính thức về lịch thi tốt nghiệp",
+    "category": "Giáo dục",
+    "verdict": "Đáng tin cậy",
+    "source": "Dữ liệu mẫu",
+    "summary": "Nội dung có văn phong trung lập và phù hợp với dạng thông báo chính thức."
+  }
+]

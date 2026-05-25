@@ -93,53 +93,6 @@
   align-items: center;
 }
 
-.chat-settings-btn {
-  background: none;
-  border: none;
-  color: var(--text-muted);
-  font-size: 18px;
-  cursor: pointer;
-  transition: color 0.2s;
-}
-
-.chat-settings-btn:hover {
-  color: var(--text-white);
-  transform: rotate(45deg);
-}
-
-/* Key Panel */
-.chat-key-panel {
-  background: rgba(0, 0, 0, 0.5);
-  padding: 20px;
-  border-bottom: 1px solid var(--border);
-}
-
-.gemini-key-input {
-  width: 100%;
-  padding: 10px 14px;
-  background: rgba(255, 255, 255, 0.05);
-  border: 1px solid var(--border);
-  color: var(--text-white);
-  border-radius: var(--radius-md);
-  outline: none;
-  font-family: monospace;
-}
-
-.gemini-key-input:focus {
-  border-color: var(--primary-light);
-  background: rgba(255, 255, 255, 0.08);
-}
-
-.chat-action-btn {
-  background: var(--primary);
-  color: white;
-  border: none;
-  padding: 8px 16px;
-  border-radius: var(--radius-md);
-  font-weight: 500;
-  cursor: pointer;
-}
-
 /* Messages Area */
 .chat-messages {
   flex: 1;

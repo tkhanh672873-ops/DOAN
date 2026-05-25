@@ -9,7 +9,7 @@
   <div class="analyzer-header">
     <div class="section-tag" style="margin-bottom:12px;">🔍 Công cụ phân tích</div>
     <h1 class="page-title">Kiểm tra độ tin cậy tin tức</h1>
-    <p class="page-subtitle">Nhập tiêu đề và nội dung bài báo, chọn mô hình và nhận kết quả ngay.</p>
+    <p class="page-subtitle">Nhập tiêu đề, nội dung hoặc tải ảnh chứa tin tức để hệ thống hỗ trợ phân tích.</p>
   </div>
 
   <!-- Main Card -->
@@ -38,14 +38,23 @@
       </div>
     </div>
 
-      <div class="form-label" style="margin-bottom:12px;">🔗 Điền nội dung tự động từ đường dẫn (Báo thật)</div>
-      <div style="display:flex;gap:10px;margin-bottom:28px;">
-        <input type="text" id="url-input" class="form-input" style="flex:1;" placeholder="Dán link bài báo (VNExpress, Thanh Niên...) vào đây">
-        <button type="button" class="btn btn-ghost" id="btn-fetch-url" style="white-space:nowrap;">📥 Tải Báo</button>
-      </div>
+    <!-- URL Fetch -->
+    <div class="form-label" style="margin-bottom:12px;">🔗 Điền nội dung tự động từ đường dẫn</div>
+    <div style="display:flex;gap:10px;margin-bottom:28px;">
+      <input
+        type="text"
+        id="url-input"
+        class="form-input"
+        style="flex:1;"
+        placeholder="Dán link bài báo vào đây"
+      >
+      <button type="button" class="btn btn-ghost" id="btn-fetch-url" style="white-space:nowrap;">
+        📥 Tải báo
+      </button>
+    </div>
 
-      <!-- Quick Fill -->
-      <div class="quick-fill">
+    <!-- Quick Fill -->
+    <div class="quick-fill">
       <span style="font-size:13px;color:var(--text-muted);align-self:center;">Mẫu nhanh:</span>
       <button class="quick-fill-btn" onclick="fillExample('fake')" id="btn-fill-fake">⚠️ Tin giả mẫu</button>
       <button class="quick-fill-btn" onclick="fillExample('real')" id="btn-fill-real">✅ Tin thật mẫu</button>
@@ -76,6 +85,32 @@
         ></textarea>
       </div>
 
+      <!-- Image Upload Analyzer -->
+      <div class="image-check-box">
+        <div class="form-label" style="margin-bottom:10px;">🖼️ Kiểm tra tin từ hình ảnh</div>
+
+        <p style="color:var(--text-muted);font-size:13px;line-height:1.6;margin-bottom:14px;">
+          Tải ảnh chụp màn hình, ảnh bài đăng hoặc ảnh chứa nội dung tin tức. Hệ thống sẽ thử đọc chữ trong ảnh bằng OCR,
+          sau đó đưa nội dung đọc được vào ô phân tích.
+        </p>
+
+        <div style="display:flex;gap:10px;align-items:center;flex-wrap:wrap;">
+          <input
+            type="file"
+            id="imageInput"
+            accept="image/png,image/jpeg,image/jpg"
+            class="form-input"
+            style="flex:1;min-width:240px;"
+          >
+
+          <button type="button" id="analyzeImageBtn" class="btn btn-ghost" style="white-space:nowrap;">
+            🖼️ Đọc chữ từ ảnh
+          </button>
+        </div>
+
+        <div id="imageResult" class="image-result"></div>
+      </div>
+
       <button type="submit" class="submit-btn" id="submit-btn">
         <span>🔍</span> Phân tích tin tức
       </button>
@@ -91,10 +126,11 @@
       <div style="font-size:22px;margin-bottom:10px;">💡</div>
       <h3 class="card-title" style="font-size:15px;margin-bottom:6px;">Mẹo sử dụng</h3>
       <p class="card-desc" style="font-size:13px;">
-        Nhập cả tiêu đề lẫn nội dung để có kết quả chính xác hơn. 
-        Chọn "So sánh tất cả" để xem ý kiến của 3 mô hình.
+        Nhập cả tiêu đề lẫn nội dung để có kết quả chính xác hơn.
+        Có thể tải ảnh để hệ thống đọc chữ rồi phân tích.
       </p>
     </div>
+
     <div class="card" style="padding:20px 22px;">
       <div style="font-size:22px;margin-bottom:10px;">⚠️</div>
       <h3 class="card-title" style="font-size:15px;margin-bottom:6px;">Lưu ý quan trọng</h3>
@@ -103,6 +139,7 @@
         từ các nguồn báo chí chính thống và cơ quan có thẩm quyền.
       </p>
     </div>
+
     <div class="card" style="padding:20px 22px;">
       <div style="font-size:22px;margin-bottom:10px;">📊</div>
       <h3 class="card-title" style="font-size:15px;margin-bottom:6px;">Xem chỉ số mô hình</h3>
